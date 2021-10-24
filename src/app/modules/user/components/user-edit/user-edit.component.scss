@@ -1,0 +1,9 @@
+.hover:hover{
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.hover::after{
+    transition: 0.3s;
+    transform: scale(1.0);
+}

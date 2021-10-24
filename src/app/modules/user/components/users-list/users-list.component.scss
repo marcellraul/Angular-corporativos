@@ -1,0 +1,28 @@
+.hover:hover{
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.hover::after{
+    transition: 0.3s;
+  
+    transform: scale(1.0);
+}
+
+.datatable-header-inner{
+    background: rgb(189, 186, 186) !important;
+    padding: 5px;
+}
+.datatable-header-cell-template-wrap{
+    background: rgb(189, 186, 186) !important;
+    padding: 5px;
+}
+::ng-deep datatable-header{
+    background: rgb(206, 202, 202) !important;
+    padding-top: 12px;
+    padding-left: 10px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+
