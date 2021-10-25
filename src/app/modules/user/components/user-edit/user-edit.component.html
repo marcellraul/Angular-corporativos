@@ -148,14 +148,25 @@
                                             <input type="text" formControlName="email" class="form-control">
                                         </div>
                                         <div class="col">
-                                            <button *ngIf="!detailContact" class="btn btn-secondary mt-3" (click)="saveContact()">AGREGAR
-                                                CONTACTO </button>
+                                            <button *ngIf="!detailContact" class="btn btn-secondary mt-3" (click)="saveContact()">
+                                                <span *ngIf="!saveCreateButtonLoading">
+                                                    AGREGAR CONTACTO 
+                                                </span>
+                                                <div *ngIf="saveCreateButtonLoading"> <span
+                                                        class="spinner-border spinner-border-sm" role="status"
+                                                        aria-hidden="true"></span>
+                                                    Loading...
+                                                </div>
+
+                                            </button>
+                                               
+
                                             <button *ngIf="detailContact" class="btn btn-secondary  mt-3" type="button"
-                                                (click)="saveForm()">
-                                                <span *ngIf="!saveButtonLoading">
+                                                (click)="saveEditContact()">
+                                                <span *ngIf="!saveEditButtonLoading">
                                                     Actualizar contacto
                                                 </span>
-                                                <div *ngIf="saveButtonLoading"> <span
+                                                <div *ngIf="saveEditButtonLoading"> <span
                                                         class="spinner-border spinner-border-sm" role="status"
                                                         aria-hidden="true"></span>
                                                     Loading...

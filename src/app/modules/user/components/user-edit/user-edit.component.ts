@@ -20,6 +20,8 @@ export class UserEditComponent implements OnInit {
   formContact: FormGroup;
   saveButton: boolean = false;
   saveButtonLoading: boolean = false;
+  saveEditButtonLoading: boolean = false;
+  saveCreateButtonLoading: boolean = false;
   constructor(private route: ActivatedRoute, public fb: FormBuilder, private _userService: UserServicesService, private location: Location) { }
 
   ngOnInit(): void {
@@ -102,6 +104,7 @@ export class UserEditComponent implements OnInit {
   }
 
   saveEditContact(){
+    this.saveEditButtonLoading = true;
     const data = {
       "id" : this.detailContact.id,
       "S_Nombre": this.formContact.get('name').value,
@@ -113,13 +116,15 @@ export class UserEditComponent implements OnInit {
       "tw_corporativo_id": this.formContact.get('tw_corporativo_id').value
     }
     this._userService.updateContactById(data).subscribe((data) => {
-      //console.log(data);
+      console.log(data);
+      this.saveEditButtonLoading = false;
       this.getCop();
     })
 
   }
 
   saveContact(){
+    this.saveCreateButtonLoading = true;
     const data = {
       "S_Nombre": this.formContact.get('name').value,
       "S_Puesto": this.formContact.get('position').value ,
@@ -132,7 +137,13 @@ export class UserEditComponent implements OnInit {
     this._userService.createContact(data).subscribe((data) => {
       //console.log(data);
       this.getCop();
+      this.saveCreateButtonLoading = false;
       this.formContact.reset();
+    },
+    (err) => {
+      this.saveCreateButtonLoading = false;
+      console.log(err);
+      
     })
 
   }
